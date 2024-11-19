@@ -3,13 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\price;
 
 class priceController extends Controller
 {
+    public function create()
+    {
+        return view('pages.price');
+    }
 
-    public function getPrices(){
-         $price = '4.55' ;
+    public function store (Request $request) {
+        $data = $request->all();
 
-        return view('price', ['price' => $price]);
-    }   
+        price::create([
+            'currency' => $data['currency'],
+            'value'=> $data['value'],
+            'amount' => $data['amount'],
+            'total' => $data['value'] * $data['amount'],
+        ]);
+
+        return view('pages.success');
+
+    }
 }

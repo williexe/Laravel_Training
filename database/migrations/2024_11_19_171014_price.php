@@ -11,18 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('invoices', function (Blueprint $table) {
+        Schema::create('price', function (Blueprint $table) {
             $table->id();
-            $table->string('invoice');
+            $table->string('currency');
+            $table->string('value');
+            $table->string('total');
+            $table->string('amount');
             $table->timestamps();
         });
     }
-
+  
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('invoices');
+        Schema::dropIfExists('price');
     }
 };
+

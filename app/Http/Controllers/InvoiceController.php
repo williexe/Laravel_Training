@@ -13,11 +13,9 @@ class InvoiceController extends Controller
         return view('invoices',['data'=>$data]);
     }
 
-    public function create(){
-        invoice::create([
-            'title'=>'real madrid'
-        ]);
+        public function create(Request $request)
+        {
+            return view('invoice');
 
-        return view('invoices-create',['msg' => 'Successfully Created']);
+        }
     }
-}
